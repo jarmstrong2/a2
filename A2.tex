@@ -52,7 +52,12 @@
  Let D$^{(k)}$ = d$_{ij}^{(k)}$ be an nxn matrix\;
  \For{i: 1 ... n}{
  \For{j: 1 ... n}{
+ \If{i = k and j = k}{
+ d$_{ij}^{(k)}$ = d$_{ij}^{(k-1)}$
+ }
+ \Else{
  d$_{ij}^{(k)}$ = max(d$_{ij}^{(k-1)}$, d$_{ik}^{(k-1)}$ * d$_{kj}^{(k-1)}$)\;
+ }
  \If{i = j and d$_{ij}^{(k)}$ \textgreater ~1}{
  return True\;
  }
