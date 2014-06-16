@@ -1,0 +1,175 @@
+% Title:   UofT Art & Sciences Assignment Sample File
+% Version: 1.00
+% Author:  Kaveh Ghasemloo
+% Date:    Sept. 28, 2012
+%
+% Licence: 
+% This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+
+\documentclass[10pt]{csc_assignment}
+\usepackage[]{algorithm2e}
+\usepackage{algpseudocode}
+\usepackage{qtree}
+
+% ----------------------------------------------------------------
+% TODO: Enter the assignment number, your name, and your student number below
+% ----------------------------------------------------------------
+\AssignmentName{1}
+\QuestionCount{5}
+\StudentName{John Armstrong, Henry Ku}
+\StudentNumber{993114492\textbackslash g2jarmst, 998551348\textbackslash g2kuhenr}
+
+% ----------------------------------------------------------------
+\begin{document}
+
+
+\Acknowledgements{
+% ----------------------------------------------------------------
+% TODO: Write your acknowledgements below.
+% ----------------------------------------------------------------
+
+"We declare that we have not used any outside help in completing this assignment."
+
+% ----------------------------------------------------------------
+% Aacknowledgements ends
+% ----------------------------------------------------------------
+}
+\begin{description}
+
+\newpage
+\item[Q1.]
+% ----------------------------------------------------------------
+% TODO: Write your answer to the question below. 
+% ----------------------------------------------------------------
+
+\emph{\underline{Algorithm}}\\
+\begin{algorithm}[H]
+ \LinesNumbered 
+ \KwIn{A fixed order list of friends that will engage in a marbling cycle F = {x$_{1}$, x$_{2}$, ..., x$_{k}$}, and a ratio R that is a matrix, such that r$_{ij}$ = R[x$_{i}$, x$_{j}$].}
+ \KwOut{True if we end up with more of our favourite marbles from friend x$_{1}$ after the marbling cycle, False otherwise.}
+ i = 0\;
+ numberOfFriends = length(F)\;
+ productOfRatios = 1\;
+ \While{i \textless ~numberOfFriends}{
+    \If{i == numberOfFriends - 1}{
+        productOfRatios = R[F[i], F[0]]  * productOfRatios\;
+    }
+    \Else{
+        productOfRatios = R[F[i], F[i+1]]  * productOfRatios\;
+    }
+    i++\;
+ }
+ \If{productOfRatios \textgreater ~1}{
+    return True\;
+ }
+ \Else{
+    return False\;
+ }
+\end{algorithm}
+
+\emph{\underline{Running Time}}\\
+\emph{Lines 4-12:} O(k) we visit each ratio once and there are k such ratios since there are k friends in the cycle.\\
+\emph{All other lines:} O(1).\\
+  
+
+% ----------------------------------------------------------------
+% Answer ends
+% ----------------------------------------------------------------
+
+\newpage
+\item[Q2.]
+% ----------------------------------------------------------------
+% TODO: Write your answer to the question below. 
+% ----------------------------------------------------------------
+
+
+% ----------------------------------------------------------------
+% Answer ends
+% ----------------------------------------------------------------
+
+\newpage
+\item[Q3.]
+% ----------------------------------------------------------------
+% TODO: Write your answer to the question below. 
+% ----------------------------------------------------------------
+
+
+% ----------------------------------------------------------------
+% Answer ends
+% ----------------------------------------------------------------
+
+\newpage
+\item[Q4.]
+% ----------------------------------------------------------------
+% TODO: Write your answer to the question below. 
+% ----------------------------------------------------------------
+
+\emph{\underline{Algorithm}}\\
+\begin{algorithm}[H]
+ \LinesNumbered 
+ \KwIn{A list \emph{A} of n houses and a list \emph{B} of m hospitals, where every house and hospital is represented by a pair (x, y) on the plane, and s and t}
+ \KwOut{"Good" if each household has access to ahospital under the restrictions listed in the question, and "Eeek" otherwise.}
+ G(V, E); \# Empty graph\
+ G.V = A $\cup$ B $\cup$ \{ T, S \} \;
+ \For{i: 1 ... m}{
+ G.addEdge(B[i], T)\;
+ }
+ \For{j: 1 ... n}{
+ G.addEdge(S, A[j])\;
+ }
+ \For{i: 1 ... m}{
+ \For{j: 1 ... n}{
+ \# d(u, v) is a distance function\
+ \If{d(A[j], B[i]) $\leqslant$ ~s}{
+    G.addEdge(A[j], B[i])\; 
+    G.capacity(A[j], B[i]) = 1\;
+ }
+ }
+ }
+ \ForEach{edge (u, v) in G.E}{
+ (u, v).f = 0\;
+ }
+ \While{there exists a path p from S to T in the residual network G$_{f}$}{
+ capacity(p) = min\{ G.capacity(u, v): (u, v) in p\} \;
+ \ForEach{edge (u, v) in p}{
+ \If{(u, v) in E}{
+ (u, v).f = (u, v).f + capacity(p)\;
+ }
+ \Else{
+ (v, u).f = (v, u).f - capacity(p)\;
+ }
+ }
+ }
+ maxFlow = 0\;
+ \For{i: 1 ... m}{
+    maxFlow += (B[i], T).f\;
+ }
+ \If{maxFlow == length(HS)}{
+ return 'Good'\;
+ }
+ \Else{
+ return 'Eeek!'\;
+ }
+ 
+\end{algorithm}
+
+
+% ----------------------------------------------------------------
+% Answer ends
+% ----------------------------------------------------------------
+
+\newpage
+\item[Q5.]
+% ----------------------------------------------------------------                                                                               
+% TODO: Write your answer to the question below.                                                                                                 
+% ----------------------------------------------------------------                                                                               
+
+SOLUTION
+
+% ----------------------------------------------------------------                                                                               
+% Answer ends                                                                                                                                    
+% ---------------------------------------------------------------- 
+
+
+\end{description}
+\end{document}
