@@ -45,20 +45,20 @@
 \emph{\underline{Algorithm}}\\
 \begin{algorithm}[H]
  \LinesNumbered 
- \KwIn{An nxn matrix R such that R[i, j] represents the ratio r$_{ij}$, also R[i, j] = -$\infty$ where i = j.}
+ \KwIn{An nxn matrix R such that R[i, j] represents the ratio r$_{ij}$, also R[i, j] = 0 where i = j.}
  \KwOut{True if we end up with more of our favourite marbles from some friend x$_{i}$ after initiating a marbling cycle, False otherwise.}
  D$^{(0)} = R$\;
  \For{k: 1 ... n}{
  Let D$^{(k)}$ = d$_{ij}^{(k)}$ be an nxn matrix\;
  \For{i: 1 ... n}{
  \For{j: 1 ... n}{
- \If{i = k and j = k}{
+ \If{i = k}{
  d$_{ij}^{(k)}$ = d$_{ij}^{(k-1)}$
  }
  \Else{
  d$_{ij}^{(k)}$ = max(d$_{ij}^{(k-1)}$, d$_{ik}^{(k-1)}$ * d$_{kj}^{(k-1)}$)\;
  }
- \If{i = j and d$_{ij}^{(k)}$ \textgreater ~1}{
+ \If{d$_{ij}^{(k)}$ * r$_{ji}$ \textgreater ~1}{
  return True\;
  }
  }
