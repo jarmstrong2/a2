@@ -45,30 +45,24 @@
 \emph{\underline{Algorithm}}\\
 \begin{algorithm}[H]
  \LinesNumbered 
- \KwIn{A fixed order list of friends that will engage in a marbling cycle F = {x$_{1}$, x$_{2}$, ..., x$_{k}$}, and a ratio R that is a matrix, such that r$_{ij}$ = R[x$_{i}$, x$_{j}$].}
- \KwOut{True if we end up with more of our favourite marbles from friend x$_{1}$ after the marbling cycle, False otherwise.}
- i = 0\;
- numberOfFriends = length(F)\;
- productOfRatios = 1\;
- \While{i \textless ~numberOfFriends}{
-    \If{i == numberOfFriends - 1}{
-        productOfRatios = R[F[i], F[0]]  * productOfRatios\;
-    }
-    \Else{
-        productOfRatios = R[F[i], F[i+1]]  * productOfRatios\;
-    }
-    i++\;
+ \KwIn{An nxn matrix R that such that R[i, j] represents the ratio r$_{ij}$, also r$_{ij}$ = 1 where i = j.}
+ \KwOut{True if we end up with more of our favourite marbles from some friend x$_{i}$ after initiating a marbling cycle, False otherwise.}
+ D$^{(0)} = R$\;
+ \For{k: 1 ... n}{
+ Let D$^{(k)}$ = d$_{ij}^{(k)}$ be an nxn matrix\;
+ \For{i: 1 ... n}{
+ \For{j: 1 ... n}{
+ d$_{ij}^{(k)}$ = max(d$_{ij}^{(k-1)}$, d$_{ik}^{(k-1)}$ * d$_{kj}^{(k-1)}$)\;
+ \If{i = j and d$_{ij}^{(k)}$ \textgreater ~1}{
+ return True\;
  }
- \If{productOfRatios \textgreater ~1}{
-    return True\;
  }
- \Else{
-    return False\;
  }
+ }
+ return False\;
 \end{algorithm}
-
 \emph{\underline{Running Time}}\\
-\emph{Lines 4-12:} O(k) we visit each ratio once and there are k such ratios since there are k friends in the cycle.\\
+\emph{Lines 2-11:} O(n$^{3}$) due to triple nested loop.\\
 \emph{All other lines:} O(1).\\
   
 
