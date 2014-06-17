@@ -147,24 +147,8 @@ If the result is greater than 1 then we have marbling cycle (cycle
  }
  }
  }
- \ForEach{edge (u, v) in G.E}{
- (u, v).f = 0\;
- }
- \While{there exists a path p from S to T in the residual network G$_{f}$}{
- capacity(p) = min\{ G.capacity(u, v): (u, v) in p\} \;
- \ForEach{edge (u, v) in p}{
- \If{(u, v) in E}{
- (u, v).f = (u, v).f + capacity(p)\;
- }
- \Else{
- (v, u).f = (v, u).f - capacity(p)\;
- }
- }
- }
- maxFlow = 0\;
- \For{i: 1 ... m}{
-    maxFlow += (B[i], T).f\;
- }
+ maxFlow = FORD_FULKERSON(G, S, T) \# Using the algorithm in CLRS Chap 26.2 with the assumptions that 
+ max flow for network G is returned\;
  \If{maxFlow == length(HS)}{
  return 'Good'\;
  }
