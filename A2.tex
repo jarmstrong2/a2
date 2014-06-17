@@ -167,6 +167,7 @@ This involves firstly iteratively connecting nodes i from A (houses) with a dire
 \emph{Lines: 11 - 19:} O(mn)\\
 \emph{Line 21:} Normally, Ford Fulkerson algorithm is O(E $\mid$f*$\mid$) (CLRS p. 725). In this case $\mid$f*$\mid$, the largest possible max flow, is n, the maximum number of houses. From our constructed bipartite graph, E = (all edges connected to S) + (all edges connected to T) + (all edges between houses and hospitals) $\leqslant$ O(n) + O(m) + O(mn), so E $\leqslant$ O(mn). Therefore line 21 is O(mn$^{2}$). \\
 It follows that the algorithm is dominated by O(mn$^{2}$).\\
+\emph{\underline{Proof}}\\
 
 % ----------------------------------------------------------------
 % Answer ends
