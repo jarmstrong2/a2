@@ -159,6 +159,8 @@ If the result is greater than 1 then we have marbling cycle (cycle
  
 \end{algorithm}
 \emph{\underline{Description}}\\
+The solution is to generate a bipartite graph with which to perform maximum matching on.
+This involves firstly iteratively connecting nodes i from A (houses) with a directed edge to node(s) i from B (hospitals) only if  d(i, j) $\leqslant$ s. Each of these edges is assigned c(i, j) = 1. Then two vertices S, the source, and T, the sink, are added to the graph. S is connected to each node i in A by directed edge (S, i), also c(S, i) = 1. Also, each node j in B is connected to T by directed edge (j, T), and c(j, T) = t (the maximum number of houses a hospital can deal with). We then produce the maximum flow value by executing the Ford Fulkerson algorithm on the graph. If the maximum flow returned equals n, the number of houses, this means that there are an adaquate number of hospitals in the area.
 
 \emph{\underline{Running Time}}\\
 \emph{Lines 3 - 6:} O(m)\\
