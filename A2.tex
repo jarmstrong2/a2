@@ -147,8 +147,8 @@ If the result is greater than 1 then we have marbling cycle (cycle
  }
  }
  }
- maxFlow = FORD\_ FULKERSON(G, S, T) \# Using the algorithm in CLRS Chap 26.2 with the assumptions that 
- max flow for network G is returned\;
+ maxFlow = FordFulkerson(G, S, T) \;
+ \# Using the algorithm in CLRS Chap 26.2 with the assumptions that max flow for network G is returned\;
  \If{maxFlow == length(HS)}{
  return 'Good'\;
  }
