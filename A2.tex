@@ -86,7 +86,7 @@ d_{ij}^{(k)} =
       \hfill max(d_{ij}^{(k-1)}, d_{ik}^{(k-1)} * d_{kj}^{(k-1)})\hfill & \text{ if $k$ $\geqslant$ 1} \\
   \end{cases}
 \]\\
-At each update of d$_{ij}^{(k)}$ we perform d$_{ij}^{(k)}$ * r_{ji}. 
+At each update of d$_{ij}^{(k)}$ we perform d$_{ij}^{(k)}$ * r$_{ji}$. 
 If the result is greater than 1 that we have marbling cycle (cycle
  of exchanges) that will be favourable. Thus a True is returned. 
  False is returned if the algorithm cannot locate a favourable
