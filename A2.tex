@@ -132,9 +132,11 @@ If the result is greater than 1 then we have marbling cycle (cycle
  G.V = A $\cup$ B $\cup$ \{ T, S \} \;
  \For{i: 1 ... m}{
  G.addEdge(B[i], T)\;
+ G.capacity(B[i], T) = t\
  }
  \For{j: 1 ... n}{
  G.addEdge(S, A[j])\;
+ G.capacity(S, A[i]) = 1\;
  }
  \For{i: 1 ... m}{
  \For{j: 1 ... n}{
