@@ -128,7 +128,8 @@ If the result is greater than 1 then we have marbling cycle (cycle
  \LinesNumbered 
  \KwIn{A list \emph{A} of n houses and a list \emph{B} of m hospitals, where every house and hospital is represented by a pair (x, y) on the plane, and s and t}
  \KwOut{"Good" if each household has access to ahospital under the restrictions listed in the question, and "Eeek" otherwise.}
- G(V, E); \# Empty graph\
+ \# Empty graph\;
+ G(V, E);
  G.V = A $\cup$ B $\cup$ \{ T, S \} \;
  \For{i: 1 ... m}{
  G.addEdge(B[i], T)\;
@@ -140,15 +141,15 @@ If the result is greater than 1 then we have marbling cycle (cycle
  }
  \For{i: 1 ... m}{
  \For{j: 1 ... n}{
- \# d(u, v) is a distance function\
+ \# d(u, v) is a distance function\;
  \If{d(A[j], B[i]) $\leqslant$ ~s}{
     G.addEdge(A[j], B[i])\; 
     G.capacity(A[j], B[i]) = 1\;
  }
  }
  }
+  \# Using the algorithm in CLRS Chap 26.2 with the assumptions that max flow for network G is returned\;
  maxFlow = FordFulkerson(G, S, T) \;
- \# Using the algorithm in CLRS Chap 26.2 with the assumptions that max flow for network G is returned\;
  \If{maxFlow == length(HS)}{
  return 'Good'\;
  }
