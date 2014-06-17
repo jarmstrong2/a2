@@ -80,10 +80,10 @@ minimal we are looking for the a series of exchanges that connect
 two vertices where the product of exchanges can be maximized.\\
 Essentially the recursive definition is defined as follows:\\
 \[
-d_{ih}^{(k)} = 
+d_{ij}^{(k)} = 
 \begin{cases} 
-      \hfill \frac{n}{2}    \hfill & \text{ if $n$ is even} \\
-      \hfill -\frac{n-1}{2} \hfill & \text{ if $n$ is odd} \\
+      \hfill r_{ij}    \hfill & \text{ if $k$ = 0} \\
+      \hfill max(d_{ij}^{(k-1)}, d_{ik}^{(k-1)} * d_{kj}^{(k-1)})\hfill & \text{ if $k$ \geqslant 1} \\
   \end{cases}
 \]
 % ----------------------------------------------------------------
