@@ -173,6 +173,7 @@ Let G (V, E) be a bipartite graph with vertex partition V = A $\cup$ B, and with
 (X$\implies$Y) If M is a matching of G(V, E) then f is the maximum flow of G'(V', E'), and f = M.\\ 
 (Y$\implies$X) Conversely, if f is the maximum flow of G'(V', E'), then M is a matching of G(V, E), and M = f. \\
 \textbf{(X$\implies$Y)}\\
+Each edge (u, v) $\in$ M is one unit flow in G' that is the path S $\rightarrow$ u $\rightarrow$ v $\rightarrow$ T. From max cut flow we know that a cut across (A $\cup$ {S}, B $\cup$ {T}) must equal $\mid$M$\mid$. It follows that the value of flow is $\mid$f$\mid$ = $\mid$M$\mid$.\\
 \textbf{(Y$\implies$X)}\\
 
 % ----------------------------------------------------------------
