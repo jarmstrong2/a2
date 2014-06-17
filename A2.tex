@@ -162,7 +162,7 @@ If the result is greater than 1 then we have marbling cycle (cycle
 \emph{Lines 3 - 6:} O(m)\\
 \emph{Lines: 7 - 10:} O(n)\\
 \emph{Lines: 11 - 19:} O(mn)\\
-\emph{Line 21:} Normally, Ford Fulkerson algorithm is O(E\| f* \|). In this case
+\emph{Line 21:} Normally, Ford Fulkerson algorithm is O(E $\mid$f*$\mid$). In this case
 |f*|, max flow, is n, the maximum number of houses. E, the number of edges in G, the 
 constructed bipartite graph is E = (all edges connected to S) + (all edges connected to T) + (all edges between houses and hospitals) = n + m + mn, so E $\leqslant$ O(mn). Therefore
 line 21 is O(mn$^{2}$). \\
