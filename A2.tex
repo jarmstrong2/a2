@@ -69,7 +69,20 @@
 \emph{\underline{Running Time}}\\
 \emph{Lines 2-16:} O(n$^{3}$) due to triple nested loop.\\
 \emph{All other lines:} O(1).\\
-  
+\emph{\underline{Description}}\\
+The algorithm is an augmented version of Floyd-Warshall as presented 
+in CLRS. Because we do not know which series exchanges will give a 
+total product greater than one, it makes sense to use an all-pairs
+algorithm. However, instead of looking at each pass whether the
+length of the path between a pair of vertices could be made more 
+minimal we are looking for the a series of exchanges that connect
+two vertices where the product of exchanges can be maximized.\\
+Essentially the recursive definition is defined as follows:\\
+d$_{ih}^{(k)}$ = 
+\begin{cases} 
+      \hfill \frac{n}{2}    \hfill & \text{ if $n$ is even} \\
+      \hfill -\frac{n-1}{2} \hfill & \text{ if $n$ is odd} \\
+  \end{cases}
 
 % ----------------------------------------------------------------
 % Answer ends
