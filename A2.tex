@@ -169,7 +169,8 @@ This involves firstly iteratively connecting nodes i from A (houses) with a dire
 It follows that the algorithm is dominated by O(mn$^{2}$).\\
 \emph{\underline{Proof}}\\
 \textbf{Claim}\\
-Suppose given a set A (n houses) and a set B (m hospitals) we compute based on constraints, s, maximum distance from house to hospital, and t, maximum houses a hospital can service, that the all m hospitals can optimally service, in total, k houses. Then it follows that if we construct a graph bipartite graph G(V, E) as described in the description, and execute Ford Fulkerson on G treating it as a network flow, the maximum flow returned will also be k.\\ 
+Let G (V, E) be a bipartite graph only with vertex partition V = A $\cup$ B, and with edge (u, v), u $\in$ A and v $\in$ B, such that distance between v and u is less than $s$. Also, at most $t$ edges can be matched to a u. Additionally, let G'(V', E') be the network flow graph constructed based on the algorithm description. Suppose that M is a matching of G(V, E) and f is the maximum flow of G'(V', E'), it follows that M = f. 
+
 % ----------------------------------------------------------------
 % Answer ends
 % ----------------------------------------------------------------
