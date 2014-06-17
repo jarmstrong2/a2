@@ -129,7 +129,7 @@ If the result is greater than 1 then we have marbling cycle (cycle
  \KwIn{A list \emph{A} of n houses and a list \emph{B} of m hospitals, where every house and hospital is represented by a pair (x, y) on the plane, and s and t}
  \KwOut{"Good" if each household has access to ahospital under the restrictions listed in the question, and "Eeek" otherwise.}
  \# Empty graph\;
- G(V, E);
+ G(V, E)\;
  G.V = A $\cup$ B $\cup$ \{ T, S \} \;
  \For{i: 1 ... m}{
  G.addEdge(B[i], T)\;
