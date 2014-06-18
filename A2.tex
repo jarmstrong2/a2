@@ -208,11 +208,16 @@ G.addEdge(S, p$_{j}$)\;
 G.capacity(S, p$_{j}$) = h$_{j}$\;
 }
 Perform Ford-Fulkerson algorithm using G, assume the function returns some object, call it f. For any edge (u,v) in G, f(u,v) will be the flow through (u,v) where f as a whole represents a max flow through G.\\
-\If{$\sum_{i = 1}^{k}$ c$_{i}$= max flow in G}{
-
+\If{$\sum_{i = 1}^{k}$ c$_{i}$ = max flow in G (ie. all tasks can be completed)}{
+\ForEach{edge (u, v) in G}{
+	\If{(u is a person and v is a task) and f(u, v) $\geqslant$ 1}{
+		Get S$_{i}$ corresponding to u and add task v to S$_{i}$
+	}
+}
+return P\;
 }
 \Else{
-Return False\;
+return False\;
 } 
 
 
