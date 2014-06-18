@@ -190,8 +190,9 @@ Let f be the maximum flow of G' as returned in the algorithm. Let M = \{(u, v) :
 \emph{\underline{Algorithm}}\\
 \begin{algorithm}[H]
  \LinesNumbered 
- \KwIn{A list of job objects J = \{(t$_{1}$, c$_{1}$), ..., (t$_{k}$, c$_{k}$)\} . A list of people/staff P = \{(p$_{1}$, h$_{1}$, S$_{1}$), ..., (p$_{n}$, h$_{n}$, S$_{n}$)\}}
- \KwOut{}
+ \KwIn{A list of job objects J = \{(t$_{1}$, c$_{1}$), ..., (t$_{k}$, c$_{k}$)\} and a list of people/staff \\
+P = \{(p$_{1}$, h$_{1}$, S$_{1}$), ..., (p$_{n}$, h$_{n}$, S$_{n}$)\}}
+ \KwOut{If all tasks can be completed return a list of jobs each p$_{i}$ will have to complete, otherwise return false.}
 \end{algorithm}
 
 % ----------------------------------------------------------------                                                                               
