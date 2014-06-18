@@ -224,7 +224,8 @@ return False\;
 \textbf{Precondition}\\
 List of Job objects J = \{(t$_{1}$, c$_{1}$), ..., (t$_{k}$, c$_{k}$)\} where t$_{i}$ is a task and c$_{i}$ is the time needed to complete the task. List of people/staff objects P = \{(p$_{1}$, h$_{1}$, S$_{1}$), ..., (p$_{n}$, h$_{n}$, S$_{n}$)\}, where p$_{i}$ is a person, h$_{i}$ is the number of hours available to work for that person, and S$_{i}$ is an empty task list.\\
 \textbf{Postcondition}\\
-
+\emph{Case 1 Not all tasks can be completed:} False value is returned.\\
+\emph{Case 2 All tasks can be completed:} all S$_{i}$'s are updated to include names of task that p$_{i}$ participate in. The updated P is returned.\\ 
 \textbf{Precondition $\implies$ Postcondition}
 
 
