@@ -194,7 +194,21 @@ Let f be the maximum flow of G' as returned in the algorithm. Let M = \{(u, v) :
  \KwOut{If all tasks can be completed return a list of jobs each p$_{i}$ will have to complete, otherwise return false.}
 \# Empty graph\\
 G(V, E)\;
-G.V = \{t$_{1}$, ..., t$_{k}$\} $\cup$ \{p$_{1}$, ..., p$_{n}$ $\cup$ \{t, s\}\}   
+G.V = \{t$_{1}$, ..., t$_{k}$\} $\cup$ \{p$_{1}$, ..., p$_{n}$\} $\cup$ \{t, s\}\;
+\For{i: 1 ... k}{
+G.addEdge(t$_{i}$, T)\;
+G.capacity(t$_{i}$, T) = c$_{i}$\;
+\For{j: 1 ... n}{
+G.addEdge(p$_{j}$, t$_{i}$)\;
+G.capacity(p$_{j}$, t$_{i}$) = h$_{j}$\;
+}
+}
+\For{j: 1 ... n}{
+G.addEdge(S, p$_{j}$)\;
+G.capacity(S, p$_j}$) = h$_{j}$\;
+}
+
+   
 
 \end{algorithm}
 
