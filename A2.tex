@@ -173,7 +173,9 @@ Let G (V, E) be a bipartite graph with vertex partition V = A $\cup$ B, and with
 (X$\implies$Y) If M is a matching of G(V, E) then f is the maximum flow of G'(V', E'), and f = M.\\ 
 (Y$\implies$X) Conversely, if f is the maximum flow of G'(V', E'), then M is a matching of G(V, E), and M = f. \\
 \textbf{(X$\implies$Y)}\\
-Suppose M is a matching of G(V, E). Begin by gathering all (u, v) $\in$ M, and make sets V$_{i}$ for each hospital v$_{i}$ to contain (u, v) where u $\in$ A and v = v$_{i}$. It follows that each (u, v) $\in$ V$_{i}$ is equivalent to one unit flow as a path S $\rightarrow$ u $\rightarrow$ v in G', such that f(S, u) = f (u, v) = 1. It follows then that f(v, T) = $\mid$V$_{i}$.\\
+Suppose M is a matching of G(V, E). We define f as follows. Begin by gathering all (u, v) $\in$ M, and make sets V$_{i}$ for each hospital v$_{i}$ to contain (u, v) where u $\in$ A and v = v$_{i}$. Then for each (u, v) $\in$ V$_{i}$, then f(S, u) = f (u, v) = 1. For all other edges (u, v) $\in$ E' not in M, let f(u, v) = 0. Then set f(v, T) = $\mid$V$_{i}$. This follows contrainst and flow conservation as outlined in the algorithm. By our definition of f, if we cut across (A $\cup$ {S}, B $\cup$ {T}) then net flow = $\sum_{i=1}^{m}$ V$_{i}$ 
+
+From this f is computed and corresponds to $\mid$M$\mid$\\
 
 % ----------------------------------------------------------------
 % Answer ends
