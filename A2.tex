@@ -232,7 +232,7 @@ Executing a Ford-Fulkerson procedure on this graph will produce a maximum flow w
 With the maximum flow representation of this graph we can determine maximum flow by the Max-Flow Min-Cut Theorem. If the maximum flow does not equal $\sum_{i = 1}^{k}$ c$_{i}$ we return False and the postcondition holds for Case 1 (lines 25 - 27). Otherwise, make a cut in the maximum flow representation of this graph between people vertices (u) and task vertices (v). Each person vertex corresponds to some p$_{i}$ in P, thus for any (u, v) where f(u, v) $\geqslant$ 1 find p$_{i}$ = u and then add task v to S$_{i}$. After updating all relevant S$_{i}$ return P, thus the postcondition holds for Case 2 (lines 17 - 24).\\
 \textbf{Termination}\\
 Termination of the algorithm rests upon the completion of the Ford-Fulkerson procedure. Becuase all capacities are integer values, there will never be any flows with an irrational value. Additionally, Edmonds-Karp algorithm could be used which guarantees termination. It follows that the algorithm must terminate as all other procedures are single iteration or for loops which are guarenteed to complete.\\
-$\blackquare$\\    
+$\blacksquare$\\    
 
 % ----------------------------------------------------------------                                                                               
 % Answer ends                                                                                                                                    
