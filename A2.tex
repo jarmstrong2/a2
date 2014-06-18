@@ -173,8 +173,7 @@ Let G (V, E) be a bipartite graph with vertex partition V = A $\cup$ B, and with
 (X$\implies$Y) If M is a matching of G(V, E) then f is the maximum flow of G'(V', E'), and f = M.\\ 
 (Y$\implies$X) Conversely, if f is the maximum flow of G'(V', E'), then M is a matching of G(V, E), and M = f. \\
 \textbf{(X$\implies$Y)}\\
-Each edge (u, v) $\in$ M is one unit flow in G' that is the path S $\rightarrow$ u $\rightarrow$ v $\rightarrow$ T. From the Max-flow minicut theorem we know that a cut across (A $\cup$ {S}, B $\cup$ {T}) must equal $\mid$M$\mid$. It follows that the value of flow is $\mid$f$\mid$ = $\mid$M$\mid$.\\
-\textbf{(Y$\implies$X)}\\
+Suppose M is a matching of G(V, E). Begin by gathering all (u, v) $\in$ M, and make sets V$_{i}$ for each hospital v$_{i}$ to contain (u, v) where u $\in$ A and v = v$_{i}$. It follows that each (u, v) $\in$ V$_{i}$ is equivalent to one unit flow as a path S $\rightarrow$ u $\rightarrow$ v in G', such that f(S, u) = f (u, v) = 1. It follows then that f(v, T) = $\mid$V$_{i}$.\\
 
 % ----------------------------------------------------------------
 % Answer ends
