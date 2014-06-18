@@ -207,7 +207,13 @@ G.capacity(p$_{j}$, t$_{i}$) = h$_{j}$\;
 G.addEdge(S, p$_{j}$)\;
 G.capacity(S, p$_{j}$) = h$_{j}$\;
 }
-Perform Ford-Fulkerson algorithm using G, assume the function returns some object, call it f. For any edge (u,v) in G, f(u,v) will be the flow through (u,v) where f as a whole represents max flow through G.\\
+Perform Ford-Fulkerson algorithm using G, assume the function returns some object, call it f. For any edge (u,v) in G, f(u,v) will be the flow through (u,v) where f as a whole represents a max flow through G.\\
+\If{$\sum_{i = 1}^{k}$ c$_{i}$= max flow in G}{
+
+}
+\Else{
+Return False\;
+} 
 
 
    
