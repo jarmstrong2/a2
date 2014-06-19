@@ -161,12 +161,15 @@ If the result is greater than 1 then we have marbling cycle (cycle
 \emph{\underline{Description}}\\
 The solution is to firstly generate a bipartite graph with which to perform maximum matching on.
 This involves firstly iteratively connecting nodes i from A (houses) with an edge to node(s) j from B (hospitals) only if  d(i, j) $\leqslant$ s. Each of these edges is assigned c(i, j) = 1. From the bipartite graph we add two vertices S, the source, T, the sink, and make the edges in all (i, j) directed from i to j. S is connected to each node i in A by directed edge (S, i), also c(S, i) = 1. Also, each node j in B is connected to T by directed edge (j, T), and c(j, T) = t (the maximum number of houses a hospital can deal with). We then produce the maximum flow value by executing the Ford Fulkerson algorithm on the graph. If the maximum flow returned equals n, the number of houses, this means that there are an adaquate number of hospitals in the area.\\
+\\
+\\
 \emph{\underline{Running Time}}\\
 \emph{Lines 3 - 6:} O(m)\\
 \emph{Lines: 7 - 10:} O(n)\\
 \emph{Lines: 11 - 19:} O(mn)\\
 \emph{Line 21:} Normally, Ford Fulkerson algorithm is O(E $\mid$f*$\mid$) (CLRS p. 725). In this case $\mid$f*$\mid$, the largest possible max flow, is n, the maximum number of houses. From our constructed bipartite graph, E = (all edges connected to S) + (all edges connected to T) + (all edges between houses and hospitals) $\leqslant$ O(n) + O(m) + O(mn), so E $\leqslant$ O(mn). Therefore line 23 is O(mn$^{2}$). \\
 It follows that the algorithm is dominated by O(mn$^{2}$).\\
+\\
 \emph{\underline{Proof}}\\
 \textbf{Claim}\\
 Let G (V, E) be a bipartite graph with vertex partition V = A $\cup$ B, and with edge (u, v), u $\in$ A and v $\in$ B. Matches occur only when the d(v, u) is at most $s$, and at most $t$ edges can be matched to any u. Let M be the set of matching edges. Additionally, let G'(V', E') be the network flow graph constructed based on the algorithm description, and suppose the algorithm has completed (ie. there are no augmenting paths), assume that if returns a max flow f.\\ 
@@ -221,16 +224,20 @@ return P\;
 return False\;
 } 
 \end{algorithm}
+\\
 \emph{\underline{Proof of Correctness}}\\
 \textbf{Precondition}\\
 List of Job objects J = \{(t$_{1}$, c$_{1}$), ..., (t$_{k}$, c$_{k}$)\} where t$_{i}$ is a task and c$_{i}$ is the time needed to complete the task. List of people/staff objects P = \{(p$_{1}$, h$_{1}$, S$_{1}$), ..., (p$_{n}$, h$_{n}$, S$_{n}$)\}, where p$_{i}$ is a person, h$_{i}$ is the number of hours available to work for that person, and S$_{i}$ is an empty task list.\\
+\\
 \textbf{Postcondition}\\
 \emph{Case 1 Not all tasks can be completed:} False value is returned.\\
 \emph{Case 2 All tasks can be completed:} all S$_{i}$'s are updated to include name(s) of task(s) that p$_{i}$ participate(s) in. The updated P is returned.\\ 
+\\
 \textbf{Precondition $\implies$ Postcondition}\\ 
 Assume the precondition holds. Using these values in J and P construct a bipartite graph where each p$_{i}$ has an edge aonnected to t$_{j}$, j $\in$ k (number of jobs). Once the bitpartite graph is constructed, add vertices S, a source, and T, a sink. Additionally, make each edge (p$_{i}$, t$_{j}$) directed, so that it exits p$_{i}$ and enters  t$_{j}$, also set c(p$_{i}$, t$_{j}$) = h$_{j}$. Make directed edges (S, p$_{i}$) with c(S, p$_{i}$) = h$_{j}$, and (t$_{j}$, T) with c(t$_{j}$, T) = c$_{j}$. Thus, we have a network flow that represents all possible ways a person could be assigned to the tasks given in J (lines 1 - 15). \\
 Executing a modified Ford-Fulkerson procedure on this graph will produce a representation of maximum flow within the network. To see that a maximum flow in this graph represents tasks in a given day consider the following. Look at a flow path from S to a person, its capacity is the maximum number of hours this person can work. Similarly, for any task to T, the capacity is the necessary hours to complete the task. With edges in the original graph, from a person to each task, only a limited number of edges can have a flow greater than 0 because the number of hours that enters a person vertex must equal those that exits it. Also, the number of hours of work that enter a task, by one or more people, is limited by the capacity of the edge between a task and vertex T. \\
 With the maximum flow representation of this graph we can determine maximum flow by the Max-Flow Min-Cut Theorem. If the maximum flow does not equal $\sum_{i = 1}^{k}$ c$_{i}$ we return False and the postcondition holds for Case 1 (lines 25 - 27). Otherwise, make a cut in the maximum flow representation of this graph between people vertices (u) and task vertices (v). Each person vertex corresponds to some p$_{i}$ in P, thus for any (u, v) where f(u, v) $\geqslant$ 1, find p$_{i}$ = u and then add task v to S$_{i}$. After updating all relevant S$_{i}$ return P, thus the postcondition holds for Case 2 (lines 17 - 24).\\
+\\
 \textbf{Termination}\\
 Termination of the algorithm rests upon the completion of the Ford-Fulkerson procedure. Once there are no more augmenting paths from S to T  Ford-Fulkerson terminates. This is guarenteed to occur since the max flow is limited to $\sum_{i = 1}^{k}$ c$_{i}$, and each augmentation in Ford-Fulkerson increases flow by at least 1 unit. Additionally, Edmonds-Karp algorithm could be used, so termination would also be guaranteed. It follows that the algorithm must terminate as all other procedures are single iteration or for loops, which are guaranteed to complete given finite number of tasks and people.\\
 $\blacksquare$\\    
