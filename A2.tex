@@ -165,13 +165,13 @@ This involves firstly iteratively connecting nodes i from A (houses) with a dire
 \emph{Lines 3 - 6:} O(m)\\
 \emph{Lines: 7 - 10:} O(n)\\
 \emph{Lines: 11 - 19:} O(mn)\\
-\emph{Line 21:} Normally, Ford Fulkerson algorithm is O(E $\mid$f*$\mid$) (CLRS p. 725). In this case $\mid$f*$\mid$, the largest possible max flow, is n, the maximum number of houses. From our constructed bipartite graph, E = (all edges connected to S) + (all edges connected to T) + (all edges between houses and hospitals) $\leqslant$ O(n) + O(m) + O(mn), so E $\leqslant$ O(mn). Therefore line 21 is O(mn$^{2}$). \\
+\emph{Line 21:} Normally, Ford Fulkerson algorithm is O(E $\mid$f*$\mid$) (CLRS p. 725). In this case $\mid$f*$\mid$, the largest possible max flow, is n, the maximum number of houses. From our constructed bipartite graph, E = (all edges connected to S) + (all edges connected to T) + (all edges between houses and hospitals) $\leqslant$ O(n) + O(m) + O(mn), so E $\leqslant$ O(mn). Therefore line 23 is O(mn$^{2}$). \\
 It follows that the algorithm is dominated by O(mn$^{2}$).\\
 \emph{\underline{Proof}}\\
 \textbf{Claim}\\
 Let G (V, E) be a bipartite graph with vertex partition V = A $\cup$ B, and with edge (u, v), u $\in$ A and v $\in$ B, such that the distance between v and u is at most $s$. Also, at most $t$ edges can be matched to any u. Additionally, let G'(V', E') be the network flow graph constructed based on the algorithm description, and suppose the algorithm has completed (ie. there are no augmenting paths).\\ 
-(X$\implies$Y) If M is a matching of G(V, E) then f is the maximum flow of G'(V', E'), and f = $\mid$M$\mid$.\\ 
-(Y$\implies$X) Conversely, if f is the maximum flow of G'(V', E'), then M is a matching of G(V, E), and $\mid$M$\mid$ = f. \\
+(X) M is a matching of G(V, E) $\iff$ (Y) f is the maximum flow of G'(V', E'), and f = $\mid$M$\mid$.\\ 
+\\
 \textbf{(X$\implies$Y)}\\
 Suppose M is a matching of G(V, E). We define f as follows. Begin by gathering all (u, v) $\in$ M, and make sets V$_{i}$ for each hospital v$_{i}$ to contain (u, v) where u $\in$ A and v = v$_{i}$. Then for all i, for each (u, v$_{i}$) $\in$ V$_{i}$, then f(S, u) = f (u, v$_{i}$) = 1. For all other edges (u, v) $\in$ E' not in M, let f(u, v) = 0. Then set f(v$_{i}$, T) = $\mid$V$_{i}$$\mid$ for each i. This follows constraint and flow conservation as outlined in the algorithm. By our definition of f, if we cut across (A $\cup$ {S}, B $\cup$ {T}) then f = $\sum_{i=1}^{m}$ V$_{i}$ = $\mid$M$\mid$.\\
 \textbf{(Y$\implies$X)}\\
