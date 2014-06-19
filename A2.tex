@@ -169,7 +169,7 @@ This involves firstly iteratively connecting nodes i from A (houses) with a dire
 It follows that the algorithm is dominated by O(mn$^{2}$).\\
 \emph{\underline{Proof}}\\
 \textbf{Claim}\\
-Let G (V, E) be a bipartite graph with vertex partition V = A $\cup$ B, and with edge (u, v), u $\in$ A and v $\in$ B, such that the distance between v and u is at most $s$. Also, at most $t$ edges can be matched to any u. Additionally, let G'(V', E') be the network flow graph constructed based on the algorithm description, and suppose the algorithm has completed (ie. there are no augmenting paths).\\ 
+Let G (V, E) be a bipartite graph with vertex partition V = A $\cup$ B, and with edge (u, v), u $\in$ A and v $\in$ B. Matches occur only when the d(v, u) is at most $s$, and at most $t$ edges can be matched to any u. Let M be the set of matching edges. Additionally, let G'(V', E') be the network flow graph constructed based on the algorithm description, and suppose the algorithm has completed (ie. there are no augmenting paths), assume that if returns a max flow f.\\ 
 \textbf{(X)} M is a matching of G(V, E) $\iff$ \textbf{(Y)} f is the maximum flow of G'(V', E'), and f = $\mid$M$\mid$.\\ 
 \\
 \textbf{(X$\implies$Y)}\\
