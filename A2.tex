@@ -235,9 +235,10 @@ return False\;
  \SetKwFunction{modFordFulkerson}{modFordFulkerson}
  \SetKwProg{myproc}{}{}{}
  \myproc{\modFordFulkerson{G}}{
-f = new flow object\\;
+\# will contain all maxflow values of edges in G\;
+f = new flow object\;
 \ForEach{edge (u, v) $\in$ E} {
-	f(u, v) = 0
+	f(u, v) = 0\;
 }
 \While{there exists a pathe p from S to T in the residual network G$_{f}$}{
 c$_{f}$(p) = min \{c$_{f}$(u, v) : (u, v) is in p\}
