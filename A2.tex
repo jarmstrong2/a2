@@ -179,7 +179,8 @@ houses for the hospitals to deal with the algorithm returns "Eeek!". Thus, using
 flow as a representation of the data, and as a method to determine our results, in both cases,
 we should expect and accurate outcome.\\
 \textbf{Proof}\\
- 
+Suppose we have sets of A and B and we construct a bipartite graph with vertices i $\in$ A and j $\in$ B, and we form edges (i, j) and c(i, j) = 1 only when d(i, j) $\leqslant$ s. Then assume that a network flow is created in the same manner as described in the description above.\\
+\emph{Case 1:} Suppose we know beforehand that the houses in A can be accomodated by the hospitals in B. In maximum flow, if in the residual graph there were no augmenting paths, it would follow that in the network graph, for each house i vertex, there would be a path that passes through i, and some hospital j, such that S $\rightarrow$ i $\rightarrow$ j $\rightarrow$ T. In constructing the network we have c(S, i) = 1, c(i, J) = 1, and c(j, T) = t. Such that      
     
 % ----------------------------------------------------------------
 % Answer ends
