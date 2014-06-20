@@ -176,8 +176,8 @@ It follows that the algorithm is dominated by O(mn$^{2}$).\\
 If the data given is such that all hospitals in B can accomodate the houses in A, then the 
 algorithm returns the correct response, "Good". However, if there are too many
 houses for the hospitals to deal with the algorithm returns "Eeek!". Thus, using a network 
-flow as a representation of the data, and as a method to determine our results, in both cases,
-we should expect and accurate outcome.\\
+flow as a representation of the data and as a method to determine our results, in each case,
+we will receive an accurate outcome.\\
 \textbf{Proof}\\
 Suppose we have sets of A and B and we construct a bipartite graph with vertices i $\in$ A and j $\in$ B, and we form edges (i, j) and c(i, j) = 1 only when d(i, j) $\leqslant$ s. Then assume that a network flow is created in the same manner as described in the description above.\\
 \emph{Case 1:} Suppose we know beforehand that the houses in A can be accomodated by the hospitals in B. In maximum flow, when the residual graph has no more augmenting paths, it would follow that in the network graph, for each house vertex i, there would be a path that passes through i, and some hospital vertex j, such that S $\rightarrow$ i $\rightarrow$ j $\rightarrow$ T. In constructing the network we have c(S, i) = 1, c(i, j) = 1, and c(j, T) = t. It would follow that for all i and some j, f(S, i) = f(i, j) = 1 and f(j, T) $\leqslant$ t \textemdash ~because we know for a fact that there are enough hospitals in the area for the houses, therefore flow within every i exists. If we cut anywhere within the maximum flow representation of the network \textemdash ~where we have sets where the source is seperated from the sink \textemdash ~then the summation of outgoing and incoming edge weights, by law of conservation, will be $\mid$A$\mid$. Therefore, as expected, string "Good" will be returned.\\    
