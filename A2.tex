@@ -102,6 +102,80 @@ If the result is greater than 1 then we have marbling cycle (cycle
 % TODO: Write your answer to the question below. 
 % ----------------------------------------------------------------
 
+\emph{\underline{Algorithm}}\\
+\begin{algorithm}[H]
+ \LinesNumbered 
+ \KwIn{A list of jobs J = \{(T$_{1}$, O$_{1}$), ..., (T$_{n}$, O$_{n}$)\} where (T$_{i}$ and (O$_{i}$ are both jobs during the same timeslot}
+ \KwOut{A sequence S of n locations that maximizes v(S), where location i represents the clinic you will work at during month i and v(S) is the total value of your savings}
+
+G(V,E)\;
+G.V = \{T$_{1}$, ..., T$_{n}$\} $\cup$ \{O$_{1}$, ..., O$_{n}$\} $\cup$ \{start, end\} \#start is start vertex and end is end vertex \;
+G.Start.capacity = 0 \;
+G.end.capacity = 0 \;
+G.addEdge(start, T$_{1}$, w=0)\;
+G.addEdge(start, O$_{1}$, w=0)\;
+\For{i: 1 ... n}{
+\If{i \textless n}{
+G.addEdge(T$_{i}$, T$_{i+1}$, w=0)\;
+G.addEdge(O$_{i}$, O$_{i+1}$, w=0)\;
+G.T$_{i}$.capacity = T$_{i}$ * -1 \#initialize the vertex with the negative of their weight \;
+G.O$_{i}$.capacity = O$_{i}$ * -1 \;
+G.addEdge(T$_{i}$, O$_{i+1}$, w=3)\;
+G.addEdge(O$_{i}$, T$_{i+1}$, w=3)\;
+}
+\Else{
+G.addEdge(T$_{i}$, end, w=0)\;
+G.addEdge(O$_{i}$, end, w=0)\;}
+}
+ \# Using the DAG-SHORTEST-PATHS algorithm in CLRS Chap 24.2 \;
+DAG-SHORTEST-PATHS(G,w, start)\;
+S=[]\;
+Income = 0\;
+Solution = ShortPath(G, start, end, S=[], Income)\;
+return Solution\;
+
+\end{algorithm}
+
+\LinesNumbered
+\begin{algorithm}[H]
+ \SetKwFunction{ShortPath}{ShortPath}
+ \SetKwProg{myprocone}{}{}{}
+ \myprocone{\ShortPath{G, start, end, S, Income}}{
+\If {end == start  \# when we finish making the path}{
+S.add(0, start) \#add the vertex to start of the S sequence\;
+return (S, Income*-1)}
+\ElseIf{end.parent == NIL \# no path available}{
+return [];
+}
+\Else{
+Income += end.capacity + w(end, end.parent)\;
+S.add(0, end)\;
+ShortPath(G,start, end.parent, S, Income)\;
+}}
+\end{algorithm}
+
+\emph{\underline{Description}}\\
+The algorithm sets up the question by establish a graph with a start and end vertices. \\
+The start vertex connects to T$_{1}$ with an edge, and O$_{1}$ with another edge.\\
+The end vertex connects to T$_{n}$ with an edge, and O$_{n}$ with another edge.\\
+The start and end vertices and their edges all have weight 0 to provide no impact on the question.\\
+Each vertex T$_{i}$ will connect to T$_{i+1}$ vertex with an edge of weight 0, and connect to O$_{i+1}$ with an edge of 3.\\
+The edge has the weight 3 as we are converting the questions into a shortest path question, by multiplying all edge and vertex weight by -1 and this represent the cost of transferring between hospital.\\
+Each vertex will have the weight of their income amount multiply by -1 as mentioned above.\\
+Then we uses the DAG-SHORTEST-PATHS algorithm to find the shortest path which in this case maximize our income\\
+Then with the graph we use Short-Path to generate the sequence of our pathing and also return our max income.\\
+ShortPath is based on chap 22.2 Print-Path algorithm\\
+
+\emph{\underline{Running Time}}\\
+
+lines 1-7,23,24,26 takes O(1) \\
+lines 7-20 are O(n)\\
+lines 22 is using DAG-SHORTEST-PATHS takes O(n+e) where n is number of vertices, and e is number of edges.\\
+line 25 uses the Short Path algorithm and it takes O(n) for the number of n vertices\\
+
+\emph{\underline{Proof}}\\
+topological sorts the algorithm to make sure that the sorted list has them in order of a directed acyclic graph.
+we init single source by setting all vertices' destination to infinite, and their parents to NIL, then set the start vertex's destination to 0.
 
 % ----------------------------------------------------------------
 % Answer ends
