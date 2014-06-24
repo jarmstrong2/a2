@@ -234,7 +234,7 @@ ShortPath(G,start, end.parent, patcount)\;
 The algorithm sets up the question by establishing a graph with a start vertex. \\
 The start vertex x$_{0}$ connects to every other vertices from x$_{1}$ to x$_{n}$ with an edge\\
 The end vertex is x$_{n}$\\
-Each vertices x$_{i}$ will connect to every other vertices  x$_{j}$ where j is > i \\ 
+Each vertices x$_{i}$ will connect to every other vertices  x$_{j}$ where j is \textgreater i \\ 
 Each edges has the weight value of -min(x$_{j}$.patient, f(j-i)), where it takes the negative minimum of the destination vertex value, versus the gun recharge value \\
 The edges are negative as DAG-SHORTEST-PATH looks for shortest path, and making them negative we can instead look for the longest path\\
  Then we uses the DAG-SHORTEST-PATHS algorithm to find the shortest path which in this case will maximize the number of patients we can save\\
@@ -244,7 +244,7 @@ ShortPath is based on chap 22.2 Print-Path algorithm\\
 \emph{\underline{Running Time}}\\
 \emph{lines 7-12 } are O(n$^{2}$) due to the nested double for loop \\
 \emph{lines 14} is using DAG-SHORTEST-PATHS takes O(n+e) where n is number of vertices, and e is number of edges and since the number of edges e is ---------. Thus, it is O(n+n) = O(n). \\
-\emph{line 27} uses the Short Path algorithm and it takes O(n) for the number of n vertices\\
+\emph{line 16} uses the Short Path algorithm and it takes O(n) for the number of n vertices\\
 All other lines are O(1).\\
 So the algorithm is bounded by O(n$^{2}$) \\
 
