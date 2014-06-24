@@ -124,7 +124,7 @@ w(O$_{i}$, O$_{i+1}$) = -(O$_{i+1}$.pay)\;
 G.addEdge(T$_{i}$, O$_{i+1}$)\;
 w(T$_{i}$,O$_{i+1}$) = -(O$_{i+1}$.pay - move\_fee)\;
 G.addEdge(O$_{i}$, T$_{i+1}$)\;
- w(O$_{i}$,T$_{i+1}$) = -(O$_{i+1}$.pay - move\_fee)\;
+ w(O$_{i}$,T$_{i+1}$) = -(T$_{i+1}$.pay - move\_fee)\;
 }
 G.addEdge(T$_{n}$, end)\;
 w(T$_{n}$, end) = -(T$_{n}$.pay)\;
