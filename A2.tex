@@ -133,10 +133,7 @@ w(O$_{n}$, end) = -(O$_{n}$.pay)\;
  \# Using the DAG-SHORTEST-PATHS algorithm in CLRS Chap 24.2 \\
 DAG-SHORTEST-PATHS(G,w, start)\;
 S=[]\;
-ShortPath(G, start, end, S=[])\;
-\# return S but remove start and end vertices from S\\
-return S[1:-1]\;
-
+return ShortPath(G, start, end, S=[])\;
 \end{algorithm}
 
 \LinesNumbered
@@ -146,7 +143,8 @@ return S[1:-1]\;
  \myprocone{\ShortPath{G, start, end, S}}{
 \If {end == start  \# when we finish making the path}{
 S.prepend(start) \#add the vertex to start of the S sequence\;
-return (S)}
+\# return S but remove start and end vertices from S\\
+return (S[1: -1])}
 \ElseIf{end.parent == NIL \# no path available}{
 return [];
 }
