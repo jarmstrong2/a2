@@ -215,7 +215,7 @@ return ShortPath(G, x$_{0}$, x$_{n}$, patients)\;
  \SetKwProg{myprocone}{}{}{}
  \myprocone{\ShortPath{G, start, end, patients}}{
 \If {end == start  \# when we finish making the path}{
-return (S, patients * -1)}
+return patients * -1
 \ElseIf{end.parent == NIL \# no path available}{
 return 0;
 }
