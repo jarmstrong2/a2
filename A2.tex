@@ -105,37 +105,27 @@ If the result is greater than 1 then we have marbling cycle (cycle
 \emph{\underline{Algorithm}}\\
 \begin{algorithm}[H]
  \LinesNumbered 
- \KwIn{A list of jobs J = \{(T$_{1}$, O$_{1}$), ..., (T$_{n}$, O$_{n}$)\} where (T$_{i}$ and (O$_{i}$ are both jobs during the same timeslot}
+ \KwIn{A list of jobs J = \{(T$_{1}$, O$_{1}$), ..., (T$_{n}$, O$_{n}$)\} where (T$_{i}$ and O$_{i}$ are both jobs during the same timeslot)}
  \KwOut{A sequence S of n locations that maximizes v(S), where location i represents the clinic you will work at during month i and v(S) is the total value of your savings}
-let w be the weight function\;
-w(start,T$_{1}$) = 0\;
-w(start,O$_{1}$) = 0\;
 G(V,E)\;
 G.V = \{T$_{1}$, ..., T$_{n}$\} $\cup$ \{O$_{1}$, ..., O$_{n}$\} $\cup$ \{start, end\} \#start is start vertex and end is end vertex \;
-G.Start.pay = 0 \;
-G.end.pay = 0 \;
-G.addEdge(start, T$_{1}$, w(start,T$_{1}$) = 0)\;
-G.addEdge(start, O$_{1}$, w(start,O$_{1}$) = 0)\;
-\For{i: 1 ... n}{
-\If{i \textless n}{
-
-G.addEdge(T$_{i}$, T$_{i+1}$, w(T$_{i}$,T$_{i+1}$) = 0)\;
-G.addEdge(O$_{i}$, O$_{i+1}$, w(O$_{i}$,O$_{i+1}$) = 0))\;
-G.T$_{i}$.pay = T$_{i}$ * -1 \#initialize the vertex with the negative of their weight \;
-G.O$_{i}$.pay = O$_{i}$ * -1 \;
-G.addEdge(T$_{i}$, O$_{i+1}$, w(T$_{i}$,O$_{i+1}$) = move\_fee))\;
-G.addEdge(O$_{i}$, T$_{i+1}$, w(O$_{i}$,T$_{i+1}$) = move\_fee))\;
+let w be the weight function\;
+let T$_{i}$.pay and O$_{i}$.pay be value of pay for location T or O on month i\;
+G.addEdge(start, T$_{1}$, w(start,T$_{1}$) = -(T$_{1}$.pay))\;
+G.addEdge(start, O$_{1}$, w(start,O$_{1}$) = -(0$_{1}$.pay))\;
+\For{i: 1 ... n - 1}{
+G.addEdge(T$_{i}$, T$_{i+1}$, w(T$_{i}$,T$_{i+1}$) = -(T$_{i+1}$.pay))\;
+G.addEdge(O$_{i}$, O$_{i+1}$, w(O$_{i}$,O$_{i+1}$) = -(O$_{i+1}$.pay))\;
+G.addEdge(T$_{i}$, O$_{i+1}$, w(T$_{i}$,O$_{i+1}$) = -(O$_{i+1}$.pay - move\_fee))\;
+G.addEdge(O$_{i}$, T$_{i+1}$, w(O$_{i}$,T$_{i+1}$) = -(O$_{i+1}$.pay - move\_fee))\;
 }
-\Else{
-G.addEdge(T$_{i}$, end, w(T$_{i}$, end) = 0))\;
-G.addEdge(O$_{i}$, end, w(O$_{i}$, end) = 0))\;}
-}
+G.addEdge(T$_{n}$, end, w(T$_{n}$, end) = T$_{n}$.pay))\;
+G.addEdge(O$_{n}$, end, w(O$_{n}$, end) = O$_{n}$.pay))\;}
  \# Using the DAG-SHORTEST-PATHS algorithm in CLRS Chap 24.2 \;
 DAG-SHORTEST-PATHS(G,w, start)\;
 S=[]\;
-Income = 0\;
-Solution = ShortPath(G, start, end, S=[], Income)\;
-return Solution\;
+ShortPath(G, start, end, S=[])\;
+return S\;
 
 \end{algorithm}
 
@@ -143,15 +133,14 @@ return Solution\;
 \begin{algorithm}[H]
  \SetKwFunction{ShortPath}{ShortPath}
  \SetKwProg{myprocone}{}{}{}
- \myprocone{\ShortPath{G, start, end, S, Income}}{
+ \myprocone{\ShortPath{G, start, end, S}}{
 \If {end == start  \# when we finish making the path}{
 S.add(0, start) \#add the vertex to start of the S sequence\;
-return (S, Income*-1)}
+return (S)}
 \ElseIf{end.parent == NIL \# no path available}{
 return [];
 }
 \Else{
-Income += end.pay + w(end.parent, end)\;
 S.add(0, end)\;
 ShortPath(G,start, end.parent, S, Income)\;
 }}
