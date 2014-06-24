@@ -188,12 +188,11 @@ $\blacksquare$\\
 % TODO: Write your answer to the question below. 
 % ----------------------------------------------------------------
 
-
 \emph{\underline{Algorithm}}\\
 \begin{algorithm}[H]
  \LinesNumbered 
  \KwIn{A list L = \{x$_{1}$, x$_{2}$, ..., x$_{n}$)\} where x$_{i}$ is the amount of patients at i$^{th}$ time, and given the function f(j), where the function returns the amount of dosage recharged when charging for j minutes}
- \KwOut{maximum number of patients able to cure P}
+ \KwOut{maximum number of patients able to cure patcount}
 let w be the weight function\;
 \# To get a path with largest amount of patients saved all patients weights are made negative because DAG-SHORTEST-PATH looks for shortest path.\\
 \# let x$_{i}$.patient be the number value of patient at times i\\
@@ -209,8 +208,8 @@ G.V = \{x$_{1}$, ..., x$_{n}$\} $\cup$ \{x$_{0}$\} \#x$_{0}$ is start vertex\;
 }
  \# Using the DAG-SHORTEST-PATHS algorithm in CLRS Chap 24.2 \\
 DAG-SHORTEST-PATHS(G,w, x$_{0}$)\;
-patients = 0\;
-return ShortPath(G, x$_{0}$, x$_{n}$, patients)\;
+patcount = 0\;
+return ShortPath(G, x$_{0}$, x$_{n}$, patcount)\;
 \end{algorithm}
 
 
@@ -218,17 +217,18 @@ return ShortPath(G, x$_{0}$, x$_{n}$, patients)\;
 \begin{algorithm}[H]
  \SetKwFunction{ShortPath}{ShortPath}
  \SetKwProg{myprocone}{}{}{}
- \myprocone{\ShortPath{G, start, end, patients}}{
+ \myprocone{\ShortPath{G, start, end, patcount}}{
 \If {end == start  \# when we finish making the path}{
-return patients * -1}
+return patcount * -1}
 \ElseIf{end.parent == NIL \# no path available}{
 return 0;
 }
 \Else{
-patients += w(end.parent, end)\;
-ShortPath(G,start, end.parent, patients)\;
+patcount += w(end.parent, end)\;
+ShortPath(G,start, end.parent, patcount)\;
 }}
 \end{algorithm}
+
 
 \emph{\underline{Description}}\\
 The algorithm sets up the question by establishing a graph with a start vertex. \\
@@ -238,9 +238,25 @@ Each vertices x$_{i}$ will connect to every other vertices  x$_{j}$ where j is >
 Each edges has the weight value of -min(x$_{j}$.patient, f(j-i)), where it takes the negative minimum of the destination vertex value, versus the gun recharge value \\
 The edges are negative as DAG-SHORTEST-PATH looks for shortest path, and making them negative we can instead look for the longest path\\
  Then we uses the DAG-SHORTEST-PATHS algorithm to find the shortest path which in this case will maximize the number of patients we can save\\
-Then with the graph we use Short-Path to go through the path graph and find out the number of the patients we can save\\
+Then with the graph we use Short-Path to go through the path graph and find out the number of the patients we can save and save the value into patcount\\
 ShortPath is based on chap 22.2 Print-Path algorithm\\
 
+\emph{\underline{Running Time}}\\
+\emph{lines 7-12 } are O(n$^{2}$) due to the nested double for loop \\
+\emph{lines 14} is using DAG-SHORTEST-PATHS takes O(n+e) where n is number of vertices, and e is number of edges and since the number of edges e is ---------. Thus, it is O(n+n) = O(n). \\
+\emph{line 27} uses the Short Path algorithm and it takes O(n) for the number of n vertices\\
+All other lines are O(1).\\
+So the algorithm is bounded by O(n$^{2}$ \\
+
+\emph{\underline{Proof}}\\
+\textbf{Claim}\\
+The algoirthm returns the maximum patient saved: patcount.\\
+  
+\textbf{Proof}\\
+By theorem 24.5 in CLRS it has been proven that any graph G(V, E, w) (without cycles), including start and end vertices in G, when used as an input for DAG-SHORTEST-PATHS will update graph G where, for each vertex i $\in$ V, we can construct a shortest path between start and i, by back tracking like so, i $\rightarrow$ i.parent $\rightarrow$ ... $\rightarrow$ start.\\
+By the construction of our graph as provided in the description, it is clear that no cycles exist as all edges point in the direction of end, and so it is not possible to revisit vertices along any path. Thus, we can be sure that DAG-SHORTEST-PATHS will execute as expected and the path between vertices start and end will be the shortest (ie. have a maximum amount of patients saved, since all weights represent number of patients that can be saved, but as negative values).\\
+Attempting to establish a contradiction, suppose that our algorithm returns patcount is not the maximum number of patient saved based on the updated graph with the shortest path S. This would mean that there is some path S' such that patcount with path S' is the maximum number of patients saved. But this would mean that the path between start and end, after running DAG-SHORTEST-PATHS on G, is not the shortest (ie. (max patients saved) * -1). But this contradicts theorem 24.5 that DAG-SHORTEST-PATHS returns the subgraph of shortest-paths. Thus patcount with Path S must be the maximum number of patients saved.\\
+$\blacksquare$\\
 
 % ----------------------------------------------------------------
 % Answer ends
