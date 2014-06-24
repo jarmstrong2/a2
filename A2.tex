@@ -173,10 +173,10 @@ So the algorithm is bounded by O(n) \\
 \textbf{Claim}\\
 The algoirthm returns a schedule S such that the accumulated income of working each months at either T or O will be maximum.\\
 \textbf{Proof}\\
-By theorem 24.5 in CLRS it has been proven that any graph G(V, E, w) (without cycles) and a start vertex in G used as an input for DAG-SHORTEST-PATHS will output an updated graph G where, for each vertex i $\in$ V, we construct a shortest path between start and i, by back tracking like so, i $\rightarrow$ i.parent $\rightarrow$ ... $\rightarrow$ start.\\
-By the construction of our graph as provided in the description, it is clear that no cycles exist as all edges point in the direction of end, and so it is not possible to revisit vertices along any path. Thus, we can be sure that DAG-SHORTEST-PATHS will execute as expected and the path between vertices start and end will be the shortest (ie. have a maximum income since all weights represent income but are negative values).\\
-Attempting to establish a contradiction, suppose that our algorithm returns S and val(S) is not the maximum income possible based on given locations in S. This would mean that there is some sequence S' such that val(S') is the maximum income. But this would mean that the path between start and end, S, after running DAG-SHORTEST-PATHS on G, is not the shortest (ie. (largest income) * -1). But this contradicts theorem 24.5. Thus val(S) must be maximum income possible.\\
-$\blacksquare$
+By theorem 24.5 in CLRS it has been proven that any graph G(V, E, w) (without cycles), and a start vertex in G, when used as an input for DAG-SHORTEST-PATHS will update graph G where, for each vertex i $\in$ V, we can construct a shortest path between start and i, by back tracking like so, i $\rightarrow$ i.parent $\rightarrow$ ... $\rightarrow$ start.\\
+By the construction of our graph as provided in the description, it is clear that no cycles exist as all edges point in the direction of end, and so it is not possible to revisit vertices along any path. Thus, we can be sure that DAG-SHORTEST-PATHS will execute as expected and the path between vertices start and end will be the shortest (ie. have a maximum income since all weights represent income but as negative values).\\
+Attempting to establish a contradiction, suppose that our algorithm returns S and val(S) is not the maximum income possible based on given locations in S. This would mean that there is some sequence S' such that val(S') is the maximum income. But this would mean that the path between start and end, after running DAG-SHORTEST-PATHS on G, is not the shortest (ie. (largest income) * -1). But this contradicts theorem 24.5 that DAG-SHORTEST-PATHS return the subgraph of shortest-paths. Thus val(S) must be maximum income possible.\\
+$\blacksquare$\\
 
 % ----------------------------------------------------------------
 % Answer ends
