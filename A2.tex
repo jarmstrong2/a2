@@ -113,7 +113,7 @@ G.V = \{T$_{1}$, ..., T$_{n}$\} $\cup$ \{O$_{1}$, ..., O$_{n}$\} $\cup$ \{start,
 \# To get a path with largest income all income weights are made negative because DAG-SHORTEST-PATH looks for shortest path.\\
 \# let T$_{i}$.pay and O$_{i}$.pay be value of pay for location T or O on month i\\
 G.addEdge(start, T$_{1}$)\;
-w(start,T$_{1}$) = T$_{1}$.pay\;
+w(start,T$_{1}$) = -(T$_{1}$.pay)\;
 G.addEdge(start, O$_{1}$)\;
 w(start,O$_{1}$) = -(O$_{1}$.pay)\;
 \For{i: 1 ... n - 1}{
