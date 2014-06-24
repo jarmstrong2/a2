@@ -157,7 +157,7 @@ ShortPath(G,start, end.parent, S)\;
 \emph{\underline{Description}}\\
 The algorithm establishes a graph with a start and end vertices along with all T$_{i}$ and O$_{i}$, 0 \textless ~i $\leqslant$ n.\\
 The start vertex connects to T$_{1}$ with an edge, and O$_{1}$ with another edge, and a weight that represents income of working at T or O, during the first month, respectively.\\
-The end vertex connects to T$_{n}$ with an edge, and O$_{n}$ with another edge. Its weight is 0, as the end will be used in to establish the shortest path.\\
+The end vertex connects to T$_{n}$ with an edge, and O$_{n}$ with another edge. Both edge weights are 0, as the end will be used in to establish the shortest path.\\
 Each vertex T$_{i}$ will connect to T$_{i+1}$ vertex with an edge of weight that is the income of working at T for month i + 1. Vertex T$_{i}$ will also connect to O$_{i+1}$ with the income of working at O during the month i + 1 minus the cost of the move.\\
 Similarly, each vertex O$_{i}$ will connect to O$_{i+1}$ vertex with an edge of weight that is the income of working at O for month i + 1. Vertex O$_{i}$ will also connect to T$_{i+1}$ with the income of working at T during the month i + 1 minus the cost of the move.\\
 It must be kept in mind that before assigning an edge weight we multiply the income value by -1. Because DAG-SHORTEST-PATHS algorithm only find the shortest path, therfore the shortest path in G will also represent the sequence of locations that will give us the most money for n months.\\
