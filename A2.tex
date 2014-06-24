@@ -165,7 +165,7 @@ Then with this graph we use the procedure Short-Path to generate the sequence of
 ShortPath is based on chap 22.2 Print-Path algorithm\\
 \emph{\underline{Running Time}}\\
 \emph{lines 10-19} are O(n)\\
-\emph{line 25} is using DAG-SHORTEST-PATHS takes O(n+e) where n is number of vertices, and e is number of edges and since the number of edges e is 4*(n-1)+4 \textemdash 4 being the edges going out from start and entering end, and 4*(n-1) being the number of edges between T$_{i}$'s and O$_{i}$'s for n months. Thus, it is O(n+n) = O(n). \\
+\emph{line 25} is using DAG-SHORTEST-PATHS takes O(n+e) where n is number of vertices, and e is number of edges and since the number of edges e is 4*(n-1)+4 (4 being the edges going out from start and entering end, and 4*(n-1) being the number of edges between T$_{i}$'s and O$_{i}$'s for n months). Thus, it is O(n+n) = O(n). \\
 \emph{line 27} uses the Short Path algorithm and it takes O(n) for the number of n vertices\\
 All other lines are O(1).\\
 So the algorithm is bounded by O(n) \\
