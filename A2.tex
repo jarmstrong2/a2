@@ -143,7 +143,7 @@ return ShortPath(G, start, end, S=[])\;
  \myprocone{\ShortPath{G, start, end, S}}{
 \If {end == start  \# when we finish making the path}{
 S.prepend(start) \#add the vertex to start of the S sequence\;
-\# return S but remove start and end vertices from S\\
+\# return S but remove "start" and "end" vertices from S\\
 return (S[1: -1])}
 \ElseIf{end.parent == NIL \# no path available}{
 return [];
