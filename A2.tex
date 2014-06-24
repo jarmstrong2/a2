@@ -184,6 +184,49 @@ we init single source by setting all vertices' destination to infinite, and thei
 % ----------------------------------------------------------------
 
 
+\emph{\underline{Algorithm}}\\
+\begin{algorithm}[H]
+ \LinesNumbered 
+ \KwIn{A list L = \{x$_{1}$, x$_{2}$, ..., x$_{n}$)\} where x$_{i}$ is the amount of patients at i$^{th}$ time, and given the function f(j), where the function returns the amount of dosage recharged when charging for j minutes}
+ \KwOut{maximum number of patients able to cure P}
+let w be the weight function\;
+\# To get a path with largest amount of patients saved all patients weights are made negative because DAG-SHORTEST-PATH looks for shortest path.\\
+\# let x$_{i}$.patient be the number value of patient at times i\\
+\# let every edge be the number of patients we can save with regards to how many shots we currently recharged\\
+G(V,E)\;
+G.V = \{x$_{1}$, ..., x$_{n}$\} $\cup$ \{x$_{0}$\} \#x$_{0}$ is start vertex\;
+
+\For{i: 0...n-1}{
+\For{j: i+1...n}{
+	G.addEdge(x$_{i}$, x$_{j}$)\;
+	w(x$_{i}$, x$_{j}$) = -min(x$_{j}$.patient, f(j-i))\;
+}
+}
+ \# Using the DAG-SHORTEST-PATHS algorithm in CLRS Chap 24.2 \\
+DAG-SHORTEST-PATHS(G,w, x$_{0}$)\;
+patients = 0\;
+return ShortPath(G, x$_{0}$, x$_{n}$, patients)\;
+\end{algorithm}
+
+
+\LinesNumbered
+\begin{algorithm}[H]
+ \SetKwFunction{ShortPath}{ShortPath}
+ \SetKwProg{myprocone}{}{}{}
+ \myprocone{\ShortPath{G, start, end, patients}}{
+\If {end == start  \# when we finish making the path}{
+return (S, patients * -1)}
+\ElseIf{end.parent == NIL \# no path available}{
+return 0;
+}
+\Else{
+patients += w(end.parent, end)\;
+ShortPath(G,start, end.parent, patients)\;
+}}
+
+
+\end{algorithm}
+
 % ----------------------------------------------------------------
 % Answer ends
 % ----------------------------------------------------------------
