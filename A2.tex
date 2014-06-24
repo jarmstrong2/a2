@@ -109,7 +109,8 @@ If the result is greater than 1 then we have marbling cycle (cycle
  \KwOut{A sequence S of n locations that maximizes v(S), where location i represents the clinic you will work at during month i and v(S) is the total value of your savings}
 G(V,E)\;
 G.V = \{T$_{1}$, ..., T$_{n}$\} $\cup$ \{O$_{1}$, ..., O$_{n}$\} $\cup$ \{start, end\} \#start is start vertex and end is end vertex \;
-\# let w be the weight function\\
+\# let w be the weight function
+\# To get a path with largest income all income weights are made negative because DAG-SHORTEST-PATH looks for shortest path.\\
 \# let T$_{i}$.pay and O$_{i}$.pay be value of pay for location T or O on month i\\
 G.addEdge(start, T$_{1}$)\;
 w(start,T$_{1}$) = T$_{1}$.pay\;
