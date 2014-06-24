@@ -163,14 +163,11 @@ Similarly, each vertex O$_{i}$ will connect to O$_{i+1}$ vertex with an edge of 
 It must be kept in mind that before assigning an edge weight we multiply the income value by -1. Because DAG-SHORTEST-PATHS algorithm only finds the shortest path, therfore the shortest path in G will also represent the sequence of locations that will give us the most money for n months.\\
 Then with this graph we use the procedure Short-Path to generate the sequence of jobs that are optimal.\\
 ShortPath is based on chap 22.2 Print-Path algorithm\\
-
 \emph{\underline{Running Time}}\\
-
-lines 1-7,23,24,26 takes O(1) \\
-lines 7-20 are O(n)\\
-lines 22 is using DAG-SHORTEST-PATHS takes O(n+e) where n is number of vertices, and e is number of edges.\\
-and since the number of edge e is 4*(n-1)+4 thus it is O(n+n) which is O(n) \\
-line 25 uses the Short Path algorithm and it takes O(n) for the number of n vertices\\
+lines 10-10 are O(n)\\
+lines 25 is using DAG-SHORTEST-PATHS takes O(n+e) where n is number of vertices, and e is number of edges and since the number of edges e is 4*(n-1)+4 \textemdash 4 being the edges going out from start and entering end, and 4*(n-1) being the number of edges between T$_{i}$'s and O$_{i}$'s for n months. Thus, it is O(n+n) = O(n). \\
+line 27 uses the Short Path algorithm and it takes O(n) for the number of n vertices\\
+All other lines are O(1).\\
 So the algorithm is bounded by O(n) \\
 \emph{\underline{Proof}}\\
 topological sorts the algorithm to make sure that the sorted list has them in order of a directed acyclic graph.
