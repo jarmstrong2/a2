@@ -144,13 +144,13 @@ return S\;
  \SetKwProg{myprocone}{}{}{}
  \myprocone{\ShortPath{G, start, end, S}}{
 \If {end == start  \# when we finish making the path}{
-S.add(0, start) \#add the vertex to start of the S sequence\;
+S.prepend(start) \#add the vertex to start of the S sequence\;
 return (S)}
 \ElseIf{end.parent == NIL \# no path available}{
 return [];
 }
 \Else{
-S.add(0, end)\;
+S.prepend(end)\;
 ShortPath(G,start, end.parent, S, Income)\;
 }}
 \end{algorithm}
