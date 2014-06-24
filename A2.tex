@@ -118,8 +118,8 @@ w(start,O$_{1}$) = -(O$_{1}$.pay)\;
 \For{i: 1 ... n - 1}{
 G.addEdge(T$_{i}$, T$_{i+1}$)\;
 w(T$_{i}$,T$_{i+1}$) = -(T$_{i+1}$.pay)\;
-G.addEdge(O$_{i}$, O$_{i+1}$, w(O$_{i}$))\;
-O$_{i+1}$) = -(O$_{i+1}$.pay\;
+G.addEdge(O$_{i}$, O$_{i+1}$)\;
+O$_{i+1}$) = -(O$_{i+1}$.pay)\;
 G.addEdge(T$_{i}$, O$_{i+1}$)\;
 w(T$_{i}$,O$_{i+1}$) = -(O$_{i+1}$.pay - move\_fee)\;
 G.addEdge(O$_{i}$, T$_{i+1}$)\;
