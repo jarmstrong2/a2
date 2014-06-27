@@ -92,7 +92,7 @@ If the result is greater than 1 then we have marbling cycle (cycle
  False is returned if the algorithm cannot locate a favourable
  cycle.\\
 \emph{Proof}\\
-\textbf{Claim}\\ d$_{ij}^{(k)}$ is optimal for all k, and represents the optimal product of exchanges in a marbing cycle between x$_{i}$ and x$_{j}$ restricted to interexchanges between the set of friends {1, 2, ..., k}. If the algorithm encounters a beneficial marbling cycle (ie. d$_{ij}^{(k)}$ * r$_{ji}$ \textgreater ~1), during any iteration where k is incremented, the algorithm will return True, and False otherwise.\\ 
+\textbf{Claim}\\ d$_{ij}^{(k)}$ is optimal for all k, and represents the optimal product of exchanges in a marbing cycle from friends x$_{i}$ to x$_{j}$ restricted to possible interexchanges between the set of friends \{1, 2, ..., k\}. If the algorithm encounters a beneficial marbling cycle (ie. d$_{ij}^{(k)}$ * r$_{ji}$ \textgreater ~1), during any iteration where k is incremented, the algorithm will return True, and False otherwise.\\ 
 \textbf{Base Case}\\
 Suppose that k = 0, it follows that d$_{ij}^{(0)}$ = r$_{ij}$. It follows that  r$_{ij}$ *  r$_{ji}$ = 1 and thus no beneficial marbling cycle currently exists, and so d$_{ij}^{(0)}$ is optimal.\\
 \textbf{Induction Hypothesis}\\
