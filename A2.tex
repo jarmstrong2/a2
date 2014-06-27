@@ -70,7 +70,6 @@
 \emph{\underline{Running Time}}\\
 \emph{Lines 2-16:} O(n$^{3}$) due to triple nested loop.\\
 \emph{All other lines:} O(1).\\
-\\
 \emph{\underline{Description}}\\
 The algorithm is an augmented version of Floyd-Warshall as presented 
 in CLRS. Because we do not know which series exchanges will give a 
@@ -92,6 +91,9 @@ If the result is greater than 1 then we have marbling cycle (cycle
  of exchanges) that is favourable. Thus True is returned. 
  False is returned if the algorithm cannot locate a favourable
  cycle.\\
+\emph{Proof}\\
+\textbf{Claim}\\ Given ratios r$_{ij}$ representing all possible exchanges x$_{i}$ and x$_{j}$ from n set of friends, the algorithm will return True if a beneficial marbling cycle exits and False otherwise.\\
+\textbf{Proof}\\
 % ----------------------------------------------------------------
 % Answer ends
 % ----------------------------------------------------------------
