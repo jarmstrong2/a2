@@ -254,7 +254,7 @@ ShortPath is based on chap 22.2 Print-Path algorithm\\
 
 \emph{\underline{Running Time}}\\
 \emph{lines 7-12 } are O(n$^{2}$) due to the nested double for loop \\
-\emph{lines 14} is using DAG-SHORTEST-PATHS takes O(n+e) where n is number of vertices, and e is number of edges and since the number of edges e is (n) * (n+1)/2 therefore it is bounded by O(n$^{2}$). Thus, it is O(n$^{2}$). \\
+\emph{lines 14} is using DAG-SHORTEST-PATHS takes O(n+e) where n is number of vertices, and e is number of edges and since the number of edges e is $\sum_{i = 1}^{n}$ = $\frac{n * (n + 1)}{2}$ therefore it is bounded by O(n$^{2}$). Thus, it is O(n$^{2}$). \\
 \emph{line 16} uses the Short Path algorithm and it takes O(n) for the number of n vertices\\
 All other lines are O(1).\\
 So the algorithm is bounded by O(n$^{2}$) \\
