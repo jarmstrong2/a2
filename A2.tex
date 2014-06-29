@@ -202,7 +202,7 @@ $\blacksquare$\\
 \emph{\underline{Algorithm}}\\
 \begin{algorithm}[H]
  \LinesNumbered 
- \KwIn{A list L = \{x$_{1}$, x$_{2}$, ..., x$_{n}$)\} where x$_{i}$ is the amount of patients at i$^{th}$ time, and given the function f(j), where the function returns the amount of dosage recharged when charging for j minutes}
+ \KwIn{A list L = \{x$_{1}$, x$_{2}$, ..., x$_{n}$\} where x$_{i}$ is the amount of patients at i$^{th}$ time, and given the function f(j), where the function returns the amount of dosage recharged when charging for j minutes}
  \KwOut{maximum number of patients able to cure patcount}
 let w be the weight function\;
 \# To get a path with largest amount of patients saved all patients weights are made negative because DAG-SHORTEST-PATH looks for shortest path.\\
@@ -243,10 +243,10 @@ ShortPath(G,start, end.parent, patcount)\;
 
 \emph{\underline{Description}}\\
 The algorithm sets up the question by establishing a graph with a start vertex. \\
-The start vertex x$_{0}$ connects to every other vertices from x$_{1}$ to x$_{n}$ with an edge\\
-The end vertex is x$_{n}$\\
+The start vertex x$_{0}$ connects to every other vertices from x$_{1}$ to x$_{n}$ with an edge.\\
+The end vertex is x$_{n}$.\\
 Each vertices x$_{i}$ will connect to every other vertices  x$_{j}$ where j is \textgreater i \\ 
-Each edges has the weight value of -min(x$_{j}$.patient, f(j-i)), where it takes the negative minimum of the destination vertex value, versus the gun recharge value \\
+Each edges has the weight value of -min(x$_{j}$.patient, f(j-i)), where it takes the negative minimum of either the destination vertex value or the gun recharge value \\
 The edges are negative as DAG-SHORTEST-PATH looks for shortest path, and making them negative we can instead look for the longest path\\
  Then we uses the DAG-SHORTEST-PATHS algorithm to find the shortest path which in this case will maximize the number of patients we can save\\
 Then with the graph we use Short-Path to go through the path graph and find out the number of the patients we can save and save the value into patcount\\
